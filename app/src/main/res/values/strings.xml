@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Football League</string>
+    <string name="badge_desc">League Image Badge</string>
+    <string name="title_league_info">League Info</string>
+</resources>
