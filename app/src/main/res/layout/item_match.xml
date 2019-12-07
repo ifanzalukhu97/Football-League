@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/small_spacing"
+    app:cardCornerRadius="@dimen/small_spacing"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/tiny_spacing">
+
+        <TextView
+            android:id="@+id/txtNameEvent"
+            style="@style/NameEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Crystal Palace vs Liverpool" />
+
+        <TextView
+            android:id="@+id/txtDateEvent"
+            style="@style/DateEvent"
+            app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+            app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+            app:layout_constraintTop_toBottomOf="@id/txtNameEvent"
+            tools:text="2019-11-23" />
+
+        <ImageView
+            android:id="@+id/imgHomeTeam"
+            style="@style/TeamBadgeItem"
+            android:layout_marginStart="@dimen/normal_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:layout_marginBottom="@dimen/normal_spacing"
+            android:contentDescription="@string/team_badge_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDateEvent"
+            tools:src="@drawable/english_premier_league" />
+
+        <TextView
+            android:id="@+id/txtScore"
+            style="@style/TextScore"
+            app:layout_constraintBottom_toTopOf="@id/txtFullTimeLabel"
+            app:layout_constraintEnd_toStartOf="@id/imgAwayTeam"
+            app:layout_constraintStart_toEndOf="@id/imgHomeTeam"
+            app:layout_constraintTop_toTopOf="@id/imgHomeTeam"
+            tools:text="1 : 1" />
+
+        <TextView
+            android:id="@+id/txtFullTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/full_time"
+            app:layout_constraintBottom_toBottomOf="@id/imgHomeTeam"
+            app:layout_constraintEnd_toEndOf="@id/txtScore"
+            app:layout_constraintStart_toStartOf="@id/txtScore" />
+
+        <ImageView
+            android:id="@+id/imgAwayTeam"
+            style="@style/TeamBadgeItem"
+            android:layout_marginEnd="@dimen/normal_spacing"
+            android:contentDescription="@string/team_badge_description"
+            app:layout_constraintBottom_toBottomOf="@id/imgHomeTeam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgHomeTeam"
+            tools:src="@drawable/spanish_la_liga" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

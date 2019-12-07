@@ -2,7 +2,7 @@ package com.example.footballleague.ui.league
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintSet.MATCH_CONSTRAINT
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.ContextCompat
 import com.example.footballleague.R
@@ -26,11 +26,12 @@ class LeagueItemUi : AnkoComponent<ViewGroup> {
                 val imgBadge = imageView {
                     id = imgBadgeLeagueItem
                     contentDescription = resources.getString(R.string.badge_desc)
-                }.lparams(width = ConstraintSet.MATCH_CONSTRAINT) {
+                }.lparams(width = MATCH_CONSTRAINT, height = MATCH_CONSTRAINT) {
                     startToStart = PARENT_ID
                     endToEnd = PARENT_ID
                     topToTop = PARENT_ID
                     padding = dimen(R.dimen.normal_spacing)
+                    dimensionRatio = "W,4:6"
                 }
 
                 textView {

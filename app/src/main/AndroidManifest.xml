@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.footballleague">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_football_soccer"
@@ -11,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.searchmatch.SearchMatchActivity" />
+        <activity android:name=".ui.matchdetail.MatchDetailActivity" />
         <activity android:name=".ui.leaguedetail.LeagueDetailActivity" />
         <activity android:name=".ui.league.MainActivity">
             <intent-filter>

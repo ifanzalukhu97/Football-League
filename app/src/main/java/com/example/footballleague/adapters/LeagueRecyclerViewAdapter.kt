@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.footballleague.R
 import com.example.footballleague.models.League
 import com.example.footballleague.ui.league.LeagueItemUi
 import com.example.footballleague.utils.Ids.imgBadgeLeagueItem
@@ -38,9 +39,10 @@ class LeagueRecyclerViewAdapter(
 
         fun bindItems(league: League, listener: (League) -> Unit) {
             txtName.text = league.name
-            Glide
-                .with(itemView)
+            Glide.with(itemView)
                 .load(league.badge)
+                .placeholder(R.drawable.ic_image_placeholder)
+                .error(R.drawable.ic_image_error)
                 .into(imgBadge)
 
             itemView.setOnClickListener {

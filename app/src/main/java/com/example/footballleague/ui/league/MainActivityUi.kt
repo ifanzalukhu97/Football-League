@@ -40,7 +40,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
 
                 adapter = LeagueRecyclerViewAdapter(leagueList = leagueInfo) { league ->
                     startActivity<LeagueDetailActivity>(
-                        LeagueDetailActivity.KEY_LEAGUE to league
+                        LeagueDetailActivity.KEY_LEAGUE_ID to league.id
                     )
                 }
 

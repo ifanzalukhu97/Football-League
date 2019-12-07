@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/colorPrimaryLighter"
+    tools:context=".ui.leaguedetail.LeagueDetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDetailLeague"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/small_spacing"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/tiny_spacing"
+        app:layout_constraintBottom_toBottomOf="@id/imgWebsite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarDetailLeague"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/cardDetailLeague"
+        app:layout_constraintEnd_toEndOf="@id/cardDetailLeague"
+        app:layout_constraintStart_toStartOf="@id/cardDetailLeague"
+        app:layout_constraintTop_toTopOf="@id/cardDetailLeague" />
+
+    <ImageView
+        android:id="@+id/imgTrophyDetailLeague"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:contentDescription="@string/image_trophy_description"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/cardDetailLeague"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNameDetailLeague"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:layout_marginEnd="@dimen/normal_spacing"
+        android:elevation="2dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/cardDetailLeague"
+        app:layout_constraintStart_toEndOf="@id/imgTrophyDetailLeague"
+        app:layout_constraintTop_toTopOf="@id/imgTrophyDetailLeague"
+        tools:text="English Premier League"
+        tools:textColor="#38003c" />
+
+    <TextView
+        android:id="@+id/txtDescDetailLeague"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgTrophyDetailLeague"
+        app:layout_constraintEnd_toEndOf="@id/txtNameDetailLeague"
+        app:layout_constraintStart_toStartOf="@id/txtNameDetailLeague"
+        app:layout_constraintTop_toBottomOf="@id/txtNameDetailLeague"
+        tools:text="The Premier League (often referred to as the English Premier League (EPL) outside England), is the top level of the English football league system. Contested by 20 clubs, it operates on a system of promotion and relegation with the English Football League (EFL).\r\n\r\nThe Premier League is a corporation in which the member clubs act as shareholders. Seasons run from August to May with each team playing 38 matches (playing each other home and away). Most games are played on Saturday and Sunday afternoons. The Premier League has featured 47 English and two Welsh clubs since its inception, making it a cross-border league.\r\n\r\nThe competition was formed as the FA Premier League on 20 February 1992 following the decision of clubs in the Football League First Division to break away from the Football League, founded in 1888, and take advantage of a lucrative television rights deal." />
+
+    <ImageView
+        android:id="@+id/imgWebsite"
+        style="@style/SocialMedia"
+        android:layout_marginTop="@dimen/normal_spacing"
+        android:contentDescription="@string/social_media_logo_description"
+        app:layout_constraintEnd_toStartOf="@+id/imgFacebook"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/imgTrophyDetailLeague"
+        app:layout_constraintTop_toBottomOf="@id/imgTrophyDetailLeague"
+        app:srcCompat="@drawable/ic_website"
+        tools:background="@color/colorPrimaryLighter" />
+
+    <ImageView
+        android:id="@+id/imgFacebook"
+        style="@style/SocialMedia"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:contentDescription="@string/social_media_logo_description"
+        app:layout_constraintEnd_toStartOf="@+id/imgTwitter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgWebsite"
+        app:layout_constraintTop_toTopOf="@id/imgWebsite"
+        app:srcCompat="@drawable/ic_facebook"
+        tools:background="@color/colorPrimaryLighter" />
+
+    <ImageView
+        android:id="@+id/imgTwitter"
+        style="@style/SocialMedia"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:contentDescription="@string/social_media_logo_description"
+        app:layout_constraintEnd_toStartOf="@+id/imgYoutube"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgFacebook"
+        app:layout_constraintTop_toTopOf="@id/imgWebsite"
+        app:srcCompat="@drawable/ic_twitter"
+        tools:background="@color/colorPrimaryLighter" />
+
+    <ImageView
+        android:id="@+id/imgYoutube"
+        style="@style/SocialMedia"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:contentDescription="@string/social_media_logo_description"
+        app:layout_constraintEnd_toEndOf="@id/txtNameDetailLeague"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgTwitter"
+        app:layout_constraintTop_toTopOf="@id/imgWebsite"
+        app:srcCompat="@drawable/ic_youtube"
+        tools:background="@color/colorPrimaryLighter" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="@dimen/normal_spacing"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@id/cardDetailLeague"
+        app:layout_constraintStart_toStartOf="@id/cardDetailLeague"
+        app:layout_constraintTop_toBottomOf="@id/imgWebsite"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabTextColor="@android:color/darker_gray">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabLastMatch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/league_last_match" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/league_next_match" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentLeagueMatch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/tiny_spacing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tabLayout"
+        app:layout_constraintStart_toStartOf="@id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

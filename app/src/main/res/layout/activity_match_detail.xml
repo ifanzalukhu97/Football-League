@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.matchdetail.MatchDetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSearchMatch"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/small_spacing"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/normal_spacing"
+            android:layout_marginEnd="@dimen/normal_spacing"
+            android:drawableEnd="@drawable/ic_search"
+            android:text="@string/search_match"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="italic" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTeamDetailMatch"
+        android:layout_width="0dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/small_spacing"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/tiny_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardSearchMatch" />
+
+    <ProgressBar
+        android:id="@+id/progressBarMatchDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/cardTeamDetailMatch"
+        app:layout_constraintEnd_toEndOf="@id/cardTeamDetailMatch"
+        app:layout_constraintStart_toStartOf="@id/cardTeamDetailMatch"
+        app:layout_constraintTop_toTopOf="@id/cardTeamDetailMatch" />
+
+    <ImageView
+        android:id="@+id/imgHomeTeam"
+        style="@style/TeamBadgeLarge"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:layout_marginTop="@dimen/normal_spacing"
+        android:layout_marginBottom="@dimen/normal_spacing"
+        android:contentDescription="@string/team_badge_description"
+        app:layout_constraintBottom_toBottomOf="@id/cardTeamDetailMatch"
+        app:layout_constraintStart_toStartOf="@id/cardTeamDetailMatch"
+        app:layout_constraintTop_toTopOf="@id/cardTeamDetailMatch"
+        tools:src="@drawable/english_premier_league" />
+
+    <TextView
+        android:id="@+id/txtScore"
+        style="@style/TextScore"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/txtFullTimeLabel"
+        app:layout_constraintEnd_toStartOf="@id/imgAwayTeam"
+        app:layout_constraintStart_toEndOf="@id/imgHomeTeam"
+        app:layout_constraintTop_toTopOf="@id/imgHomeTeam"
+        tools:text="1 : 1" />
+
+    <TextView
+        android:id="@+id/txtFullTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="@string/full_time"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/imgHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/txtScore"
+        app:layout_constraintStart_toStartOf="@id/txtScore" />
+
+    <ImageView
+        android:id="@+id/imgAwayTeam"
+        style="@style/TeamBadgeLarge"
+        android:layout_marginEnd="@dimen/normal_spacing"
+        android:contentDescription="@string/team_badge_description"
+        app:layout_constraintBottom_toBottomOf="@id/imgHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/cardTeamDetailMatch"
+        app:layout_constraintTop_toTopOf="@id/imgHomeTeam"
+        tools:src="@drawable/spanish_la_liga" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardGoalDetailsMatch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:cardCornerRadius="@dimen/tiny_spacing"
+        app:layout_constraintEnd_toEndOf="@id/cardTeamDetailMatch"
+        app:layout_constraintStart_toStartOf="@id/cardTeamDetailMatch"
+        app:layout_constraintTop_toBottomOf="@id/cardTeamDetailMatch">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_spacing">
+
+            <TextView
+                android:id="@+id/txtGoalDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_spacing"
+                android:text="@string/goal_detail"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtHomeGoalDetails"
+                style="@style/GoalDetails"
+                android:layout_marginTop="@dimen/small_spacing"
+                app:layout_constraintStart_toStartOf="@id/txtGoalDetails"
+                app:layout_constraintTop_toBottomOf="@id/txtGoalDetails"
+                tools:text="41':Ruben Neves" />
+
+            <TextView
+                android:id="@+id/txtAwayGoalDetails"
+                style="@style/GoalDetails"
+                app:layout_constraintEnd_toEndOf="@id/txtGoalDetails"
+                app:layout_constraintTop_toTopOf="@id/txtHomeGoalDetails"
+                tools:text="90':Trezeguet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardStatisticMatch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:cardCornerRadius="@dimen/tiny_spacing"
+        app:layout_constraintEnd_toEndOf="@id/cardTeamDetailMatch"
+        app:layout_constraintStart_toStartOf="@id/cardTeamDetailMatch"
+        app:layout_constraintTop_toBottomOf="@id/cardGoalDetailsMatch">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_spacing">
+
+            <TextView
+                android:id="@+id/txtNameEvent"
+                style="@style/NameEvent"
+                android:layout_margin="@dimen/normal_spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Crystal Palace vs Liverpool" />
+
+            <TextView
+                android:id="@+id/txtDateEvent"
+                style="@style/DateEvent"
+                app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+                app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+                app:layout_constraintTop_toBottomOf="@id/txtNameEvent"
+                tools:text="2019-11-23" />
+
+            <View
+                android:id="@+id/lineStatistic"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/normal_spacing"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@id/txtDateEvent" />
+
+            <TextView
+                android:id="@+id/txtStatistic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_spacing"
+                android:text="@string/statistic"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+                app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+                app:layout_constraintTop_toBottomOf="@id/lineStatistic" />
+
+            <TextView
+                android:id="@+id/txtHomeShots"
+                style="@style/StatisticValue"
+                android:layout_marginTop="@dimen/tiny_spacing"
+                app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+                app:layout_constraintTop_toBottomOf="@id/txtStatistic"
+                tools:text="5" />
+
+            <TextView
+                android:id="@+id/txtAwayShots"
+                style="@style/StatisticValue"
+                app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+                app:layout_constraintTop_toTopOf="@id/txtHomeShots"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/txtShots"
+                style="@style/StatisticLabel"
+                android:text="@string/shots"
+                app:layout_constraintBottom_toBottomOf="@id/txtHomeShots"
+                app:layout_constraintEnd_toStartOf="@id/txtAwayShots"
+                app:layout_constraintStart_toEndOf="@id/txtHomeShots"
+                app:layout_constraintTop_toTopOf="@id/txtHomeShots" />
+
+            <TextView
+                android:id="@+id/txtHomeYellowCards"
+                style="@style/StatisticValue"
+                android:layout_marginTop="@dimen/tiny_spacing"
+                app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+                app:layout_constraintTop_toBottomOf="@id/txtHomeShots"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/txtAwayYellowCards"
+                style="@style/StatisticValue"
+                app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+                app:layout_constraintTop_toTopOf="@id/txtHomeYellowCards"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/txtYellowCards"
+                style="@style/StatisticLabel"
+                android:text="@string/yellow_cards"
+                app:layout_constraintBottom_toBottomOf="@id/txtHomeYellowCards"
+                app:layout_constraintEnd_toStartOf="@id/txtAwayYellowCards"
+                app:layout_constraintStart_toEndOf="@id/txtHomeYellowCards"
+                app:layout_constraintTop_toTopOf="@id/txtHomeYellowCards" />
+
+            <TextView
+                android:id="@+id/txtHomeRedCards"
+                style="@style/StatisticValue"
+                android:layout_marginTop="@dimen/tiny_spacing"
+                app:layout_constraintStart_toStartOf="@id/txtNameEvent"
+                app:layout_constraintTop_toBottomOf="@id/txtHomeYellowCards"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/txtAwayRedCards"
+                style="@style/StatisticValue"
+                app:layout_constraintEnd_toEndOf="@id/txtNameEvent"
+                app:layout_constraintTop_toTopOf="@id/txtHomeRedCards"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/txtRedCards"
+                style="@style/StatisticLabel"
+                android:text="@string/red_cards"
+                app:layout_constraintBottom_toBottomOf="@id/txtHomeRedCards"
+                app:layout_constraintEnd_toStartOf="@id/txtAwayRedCards"
+                app:layout_constraintStart_toEndOf="@id/txtHomeRedCards"
+                app:layout_constraintTop_toTopOf="@id/txtHomeRedCards" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,5 +6,6 @@
     <color name="colorSecondary">#ffc60b</color>
 
     <color name="colorPrimaryLighter">#555555</color>
-    <color name="colorPrimaryInverted">#bbbbbb</color>
+
+    <color name="whiteDark">#F1F1F5</color>
 </resources>
