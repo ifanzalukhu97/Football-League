@@ -1,4 +1,4 @@
-package com.example.footballleague.models
+package com.example.footballleague.source.remote
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,21 +1,23 @@
 package com.example.footballleague.ui.matchdetail
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
-import com.example.footballleague.models.DetailMatch
-import com.example.footballleague.ui.searchmatch.SearchMatchActivity
+import com.example.footballleague.source.remote.DetailMatch
 import com.example.footballleague.utils.Commons
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_match_detail.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
 class MatchDetailActivity : AppCompatActivity() {
@@ -26,10 +28,13 @@ class MatchDetailActivity : AppCompatActivity() {
 
     private var eventId: String = "-1"
     private lateinit var viewModel: MatchDetailViewModel
+    private var menuItem: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_detail)
+
+        setSupportActionBar(toolbar)
 
         eventId = intent.getStringExtra(KEY_EVENT_ID) ?: "-1"
 
@@ -39,15 +44,11 @@ class MatchDetailActivity : AppCompatActivity() {
             .get(MatchDetailViewModel::class.java)
 
         viewModelReadyToObserve()
-
-        cardSearchMatch.setOnClickListener {
-            startActivity<SearchMatchActivity>()
-            finish()
-        }
     }
 
     private fun viewModelReadyToObserve() {
         with(viewModel) {
+            favoriteState(eventId)
             getDetailMatch(eventId)
 
             darkVibrantSwatch.observe(this@MatchDetailActivity, Observer { color ->
@@ -76,6 +77,10 @@ class MatchDetailActivity : AppCompatActivity() {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
+            })
+
+            addFavoriteResponse.observe(this@MatchDetailActivity, Observer { message ->
+                Toast.makeText(this@MatchDetailActivity, message, Toast.LENGTH_SHORT).show()
             })
         }
     }
@@ -166,5 +171,36 @@ class MatchDetailActivity : AppCompatActivity() {
 
     private fun setBackgroundView(color: Int) {
         container.setBackgroundColor(color)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_match_menu, menu)
+        menuItem = menu
+        setFavorite()
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.add_to_favorite -> {
+                with(viewModel) {
+                    if (isFavorite) removeMatchFromFavorite() else addMatchToFavorite()
+
+                    isFavorite = !isFavorite
+                    setFavorite()
+                }
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setFavorite() {
+        menuItem?.getItem(0)?.icon = when (viewModel.isFavorite) {
+            true -> ContextCompat.getDrawable(this, R.drawable.ic_added_to_favorites)
+            false -> ContextCompat.getDrawable(this, R.drawable.ic_add_to_favorites)
+        }
+
     }
 }

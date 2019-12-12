@@ -29,7 +29,6 @@ class SearchMatchActivity : AppCompatActivity() {
 
         adapter = MatchRvAdapter { eventId ->
             startActivity<MatchDetailActivity>(MatchDetailActivity.KEY_EVENT_ID to eventId)
-            finish()
         }
 
         populateView()

@@ -10,11 +10,18 @@
     <string name="shots">Shots</string>
     <string name="yellow_cards">Yellow Cards</string>
     <string name="red_cards">Red Cards</string>
-    <string name="search_match">Search match by team name</string>
     <string name="no_match">Empty Match /\nMatch Not Found</string>
     <string name="image_trophy_description">Image Trophy</string>
     <string name="social_media_logo_description">Social Media Logo</string>
     <string name="team_badge_description">Team Badge</string>
     <string name="search_match_hint">Search Match</string>
     <string name="no_match_desription">No Match</string>
+    <string name="search_match_action">Search Match</string>
+    <string name="match_details_title">Match Details</string>
+    <string name="list_favorite_action">Favorite</string>
+    <string name="favorite_last_match">Last Match</string>
+    <string name="favorite_next_match">Next Match</string>
+    <string name="add_to_favorite">Add to Favorite</string>
+    <string name="sucess_added_to_favorite">Added to favorite</string>
+    <string name="success_remove_to_favorite">Removed to favorite</string>
 </resources>

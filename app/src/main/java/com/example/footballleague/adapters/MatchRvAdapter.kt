@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.footballleague.R
-import com.example.footballleague.models.Match
+import com.example.footballleague.source.remote.Match
 import com.example.footballleague.utils.Commons
 import kotlinx.android.synthetic.main.item_match.view.*
 import org.jetbrains.anko.doAsync

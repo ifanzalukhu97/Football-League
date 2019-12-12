@@ -1,6 +1,7 @@
-package com.example.footballleague.models
+package com.example.footballleague.source
 
 import com.example.footballleague.R
+import com.example.footballleague.source.remote.League
 
 object Data {
     fun getLeagueInfo(): List<League> {

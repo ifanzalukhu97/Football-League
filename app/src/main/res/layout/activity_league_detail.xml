@@ -12,9 +12,9 @@
         android:id="@+id/cardDetailLeague"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/small_spacing"
+        android:layout_marginStart="@dimen/tiny_spacing"
         android:layout_marginTop="@dimen/small_spacing"
-        android:layout_marginEnd="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/tiny_spacing"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="@dimen/tiny_spacing"
         app:layout_constraintBottom_toBottomOf="@id/imgWebsite"
@@ -38,11 +38,11 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="@dimen/normal_spacing"
-        android:layout_marginTop="@dimen/large_spacing"
+        android:layout_marginTop="@dimen/normal_spacing"
         android:contentDescription="@string/image_trophy_description"
         android:elevation="2dp"
         app:layout_constraintStart_toStartOf="@id/cardDetailLeague"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/cardDetailLeague" />
 
     <TextView
         android:id="@+id/txtNameDetailLeague"
@@ -128,7 +128,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="48dp"
         android:layout_marginTop="@dimen/normal_spacing"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="@id/cardDetailLeague"
@@ -139,7 +139,6 @@
         app:tabTextColor="@android:color/darker_gray">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabLastMatch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/league_last_match" />
@@ -155,7 +154,6 @@
         android:id="@+id/fragmentLeagueMatch"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/tiny_spacing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tabLayout"
         app:layout_constraintStart_toStartOf="@id/tabLayout"

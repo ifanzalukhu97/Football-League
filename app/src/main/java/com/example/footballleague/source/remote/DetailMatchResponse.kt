@@ -1,4 +1,4 @@
-package com.example.footballleague.models
+package com.example.footballleague.source.remote
 
 import com.google.gson.annotations.SerializedName
 
@@ -28,4 +28,7 @@ data class DetailMatch(
 
     @SerializedName("strHomeGoalDetails") val homeGoalDetails: String?,
     @SerializedName("strAwayGoalDetails") val awayGoalDetails: String?
-)
+) {
+    val isNextMatch: Boolean
+        get() = homeScore.isNullOrBlank() && awayScore.isNullOrBlank()
+}

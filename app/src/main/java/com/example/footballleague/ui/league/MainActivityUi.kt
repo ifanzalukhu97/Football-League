@@ -6,27 +6,27 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.footballleague.R
 import com.example.footballleague.adapters.LeagueRecyclerViewAdapter
-import com.example.footballleague.models.Data
+import com.example.footballleague.source.Data
 import com.example.footballleague.ui.leaguedetail.LeagueDetailActivity
 import com.example.footballleague.utils.Ids.toolbarLeague
 import org.jetbrains.anko.*
+import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.constraint.layout.matchConstraint
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class MainActivityUi : AnkoComponent<MainActivity> {
-    override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
 
+    override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         constraintLayout {
             backgroundColor = ContextCompat.getColor(context, R.color.colorPrimary)
             lparams(width = matchParent, height = matchParent)
 
-            val toolbar = toolbar {
+            toolbar {
                 id = toolbarLeague
                 backgroundColor = ContextCompat.getColor(context, R.color.colorPrimary)
                 setTitleTextColor(ContextCompat.getColor(context, R.color.colorSecondary))
                 title = resources.getString(R.string.title_league_info)
-
             }.lparams(width = matchParent, height = dimenAttr(R.attr.actionBarSize)) {
                 elevation = dimen(R.dimen.tiny_spacing).toFloat()
 
@@ -54,7 +54,7 @@ class MainActivityUi : AnkoComponent<MainActivity> {
                 endToEnd = PARENT_ID
                 startToStart = PARENT_ID
                 bottomToBottom = PARENT_ID
-                topToBottom = toolbar.id
+                topToBottom = toolbarLeague
             }
         }
     }

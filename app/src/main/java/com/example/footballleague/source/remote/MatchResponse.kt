@@ -1,4 +1,4 @@
-package com.example.footballleague.models
+package com.example.footballleague.source.remote
 
 import com.google.gson.annotations.SerializedName
 
@@ -13,7 +13,7 @@ data class Match(
     val dateEvent: String,
     val idHomeTeam: String,
     val idAwayTeam: String,
-    @SerializedName("strSport") val sportType: String
+    @SerializedName("strSport") val sportType: String = "Soccer"
 )
 
 data class MatchResponse(

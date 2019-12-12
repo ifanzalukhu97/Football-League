@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
-import com.example.footballleague.models.LeagueDetail
+import com.example.footballleague.source.remote.LeagueDetail
 import com.example.footballleague.ui.lastmatch.LastMatchFragment
 import com.example.footballleague.ui.nextmatch.NextMatchFragment
 import com.google.android.material.tabs.TabLayout

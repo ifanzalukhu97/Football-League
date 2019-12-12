@@ -11,8 +11,8 @@ import com.bumptech.glide.request.transition.Transition
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.TheSportDbApi
-import com.example.footballleague.models.LeagueDetail
-import com.example.footballleague.models.LeagueDetailResponse
+import com.example.footballleague.source.remote.LeagueDetail
+import com.example.footballleague.source.remote.LeagueDetailResponse
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread

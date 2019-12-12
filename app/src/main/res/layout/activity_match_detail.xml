@@ -7,31 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.matchdetail.MatchDetailActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardSearchMatch"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="@dimen/small_spacing"
-        android:layout_marginTop="@dimen/small_spacing"
-        android:layout_marginEnd="@dimen/small_spacing"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="@dimen/small_spacing"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/normal_spacing"
-            android:layout_marginEnd="@dimen/normal_spacing"
-            android:drawableEnd="@drawable/ic_search"
-            android:text="@string/search_match"
-            android:textColor="@android:color/darker_gray"
-            android:textStyle="italic" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/match_details_title" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTeamDetailMatch"
@@ -44,7 +28,7 @@
         app:cardCornerRadius="@dimen/tiny_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardSearchMatch" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <ProgressBar
         android:id="@+id/progressBarMatchDetail"
@@ -147,7 +131,6 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardStatisticMatch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_spacing"
@@ -214,7 +197,6 @@
                 tools:text="2" />
 
             <TextView
-                android:id="@+id/txtShots"
                 style="@style/StatisticLabel"
                 android:text="@string/shots"
                 app:layout_constraintBottom_toBottomOf="@id/txtHomeShots"
@@ -238,7 +220,6 @@
                 tools:text="2" />
 
             <TextView
-                android:id="@+id/txtYellowCards"
                 style="@style/StatisticLabel"
                 android:text="@string/yellow_cards"
                 app:layout_constraintBottom_toBottomOf="@id/txtHomeYellowCards"
@@ -262,7 +243,6 @@
                 tools:text="2" />
 
             <TextView
-                android:id="@+id/txtRedCards"
                 style="@style/StatisticLabel"
                 android:text="@string/red_cards"
                 app:layout_constraintBottom_toBottomOf="@id/txtHomeRedCards"

@@ -1,4 +1,4 @@
-package com.example.footballleague.models
+package com.example.footballleague.source.remote
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,10 @@
 package com.example.footballleague.ui.matchdetail
 
 import android.app.Application
+import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,8 +16,9 @@ import com.bumptech.glide.request.transition.Transition
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.TheSportDbApi
-import com.example.footballleague.models.DetailMatch
-import com.example.footballleague.models.DetailMatchResponse
+import com.example.footballleague.source.local.db.database
+import com.example.footballleague.source.remote.DetailMatch
+import com.example.footballleague.source.remote.DetailMatchResponse
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -39,6 +42,12 @@ class MatchDetailViewModel(
     private val _isShowLoading = MutableLiveData<Boolean>()
     val isShowLoading: LiveData<Boolean>
         get() = _isShowLoading
+
+    private val _addFavoriteResponse = MutableLiveData<String>()
+    val addFavoriteResponse: LiveData<String>
+        get() = _addFavoriteResponse
+
+    var isFavorite: Boolean = false
 
     fun getDetailMatch(eventId: String) {
         _isShowLoading.postValue(true)
@@ -82,6 +91,38 @@ class MatchDetailViewModel(
 
                     })
             }
+        }
+    }
+
+    fun addMatchToFavorite() {
+        try {
+            _detailMatch.value?.let { match ->
+                app.database.addToFavorite(match)
+            }
+            _addFavoriteResponse.postValue(app.getString(R.string.sucess_added_to_favorite))
+
+        } catch (e: SQLiteConstraintException) {
+            _addFavoriteResponse.postValue(e.localizedMessage)
+        }
+    }
+
+    fun removeMatchFromFavorite() {
+        try {
+            _detailMatch.value?.let { match ->
+                app.database.removeFromFavorite(match.idEvent)
+            }
+
+            _addFavoriteResponse.postValue(app.getString(R.string.success_remove_to_favorite))
+        } catch (e: SQLiteConstraintException) {
+            _addFavoriteResponse.postValue(e.localizedMessage)
+        }
+    }
+
+    fun favoriteState(eventId: String) {
+        try {
+            isFavorite = app.database.favoriteState(eventId)
+        } catch (e: SQLiteConstraintException) {
+            Log.d("Hell", e.localizedMessage ?: "")
         }
     }
 }

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.footballleague.R
-import com.example.footballleague.models.League
+import com.example.footballleague.source.remote.League
 import com.example.footballleague.ui.league.LeagueItemUi
 import com.example.footballleague.utils.Ids.imgBadgeLeagueItem
 import com.example.footballleague.utils.Ids.txtNameLeagueItem

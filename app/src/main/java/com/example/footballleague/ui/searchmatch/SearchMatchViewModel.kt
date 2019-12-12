@@ -3,8 +3,8 @@ package com.example.footballleague.ui.searchmatch
 import androidx.lifecycle.*
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.TheSportDbApi
-import com.example.footballleague.models.Match
-import com.example.footballleague.models.SearchMatchResponse
+import com.example.footballleague.source.remote.Match
+import com.example.footballleague.source.remote.SearchMatchResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import org.jetbrains.anko.doAsync

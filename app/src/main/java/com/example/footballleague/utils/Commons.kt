@@ -2,8 +2,8 @@ package com.example.footballleague.utils
 
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.TheSportDbApi
-import com.example.footballleague.models.TeamBadge
-import com.example.footballleague.models.TeamBadgeResponse
+import com.example.footballleague.source.remote.TeamBadge
+import com.example.footballleague.source.remote.TeamBadgeResponse
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,7 +53,12 @@ object Commons {
         )
 
         badgeUrl = data.teams.first().teamBadgeUrl
-        listTeamBadge.add(TeamBadge(teamId = teamId, teamBadgeUrl = badgeUrl))
+        listTeamBadge.add(
+            TeamBadge(
+                teamId = teamId,
+                teamBadgeUrl = badgeUrl
+            )
+        )
 
         return badgeUrl
     }
