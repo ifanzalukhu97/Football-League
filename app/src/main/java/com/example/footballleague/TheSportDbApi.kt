@@ -1,62 +1,30 @@
 package com.example.footballleague
 
-import android.net.Uri
-
 object TheSportDbApi {
 
     private const val URL_PATH = "api/v1/json/1"
 
     fun getLeagueDetails(leagueId: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("lookupleague.php")
-            .appendQueryParameter("id", leagueId)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/lookupleague.php?id=" + leagueId
     }
 
     fun getLastMatch(eventId: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("eventspastleague.php")
-            .appendQueryParameter("id", eventId)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/eventspastleague.php?id=" + eventId
     }
 
     fun getNextMatch(eventId: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("eventsnextleague.php")
-            .appendQueryParameter("id", eventId)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/eventsnextleague.php?id=" + eventId
     }
 
     fun getTeamBadgeById(teamId: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("lookupteam.php")
-            .appendQueryParameter("id", teamId)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/lookupteam.php?id=" + teamId
     }
 
     fun getDetailMatch(eventId: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("lookupevent.php")
-            .appendQueryParameter("id", eventId)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/lookupevent.php?id=" + eventId
     }
 
     fun searchMatch(query: String): String {
-        return Uri.parse(BuildConfig.BASE_URL).buildUpon()
-            .appendPath(URL_PATH)
-            .appendPath("searchevents.php")
-            .appendQueryParameter("e", query)
-            .build()
-            .toString()
+        return BuildConfig.BASE_URL + URL_PATH + "/searchevents.php?e=" + query.replace(" ", "%20")
     }
 }

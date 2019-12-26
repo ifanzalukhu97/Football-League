@@ -6,7 +6,8 @@ import com.example.footballleague.TheSportDbApi
 import com.example.footballleague.source.remote.Match
 import com.example.footballleague.source.remote.MatchResponse
 import com.google.gson.Gson
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class NextMatchViewModel(
     private val gson: Gson,
@@ -27,13 +28,13 @@ class NextMatchViewModel(
     fun getMatchList(eventId: String) {
         _isShowLoading.postValue(true)
 
-        doAsync {
+        GlobalScope.launch {
             val data = gson.fromJson(
-                apiRepository.doRequest(
-                    TheSportDbApi.getNextMatch(eventId)
-                ),
+                apiRepository.doRequestAsync(TheSportDbApi.getNextMatch(eventId)).await(),
                 MatchResponse::class.java
             )
+
+            _isShowLoading.postValue(false)
 
             _matchList.postValue(
                 when (data.matchList.isNullOrEmpty()) {
@@ -41,9 +42,6 @@ class NextMatchViewModel(
                     false -> data.matchList
                 }
             )
-
-            _isShowLoading.postValue(false)
-
         }
     }
 }

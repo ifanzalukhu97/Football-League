@@ -20,6 +20,8 @@ import com.example.footballleague.source.local.db.database
 import com.example.footballleague.source.remote.DetailMatch
 import com.example.footballleague.source.remote.DetailMatchResponse
 import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -52,11 +54,9 @@ class MatchDetailViewModel(
     fun getDetailMatch(eventId: String) {
         _isShowLoading.postValue(true)
 
-        doAsync {
+        GlobalScope.launch {
             val data = gson.fromJson(
-                apiRepository.doRequest(
-                    TheSportDbApi.getDetailMatch(eventId)
-                ),
+                apiRepository.doRequestAsync(TheSportDbApi.getDetailMatch(eventId)).await(),
                 DetailMatchResponse::class.java
             )
 

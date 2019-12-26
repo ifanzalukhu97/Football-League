@@ -7,7 +7,6 @@ import com.example.footballleague.source.remote.Match
 import com.example.footballleague.source.remote.SearchMatchResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.*
-import org.jetbrains.anko.doAsync
 
 class SearchMatchViewModel(
     private val gson: Gson,
@@ -34,19 +33,22 @@ class SearchMatchViewModel(
     val isShowLoading: LiveData<Boolean>
         get() = _isShowLoading
 
-    private fun searchMovieByQuery(query: String) {
+    fun searchMovieByQuery(query: String) {
         _isShowLoading.postValue(true)
 
         if (query.isBlank()) {
+//            EspressoIdlingResource.increment()
+
             _matchList.postValue(emptyList())
             _isShowLoading.postValue(false)
 
+//            EspressoIdlingResource.decrement()
         } else {
-            doAsync {
+//            EspressoIdlingResource.increment()
+
+            GlobalScope.launch {
                 val data = gson.fromJson(
-                    apiRepository.doRequest(
-                        TheSportDbApi.searchMatch(query)
-                    ),
+                    apiRepository.doRequestAsync(TheSportDbApi.searchMatch(query)).await(),
                     SearchMatchResponse::class.java
                 )
 
@@ -59,6 +61,8 @@ class SearchMatchViewModel(
 
                 _isShowLoading.postValue(false)
                 _matchList.postValue(sportSoccerList)
+
+//                EspressoIdlingResource.decrement()
             }
         }
     }
@@ -77,9 +81,14 @@ class SearchMatchViewModel(
         searchJob?.cancel()
 
         searchJob = coroutineScope.launch {
+            //            EspressoIdlingResource.increment()
+
             // wait 1 second after user type query
             // after that get match from searchMovieByQuery API
             delay(1000)
+
+//            EspressoIdlingResource.decrement()
+
             searchMovieByQuery(query)
         }
     }

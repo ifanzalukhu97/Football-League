@@ -14,6 +14,8 @@ import com.example.footballleague.TheSportDbApi
 import com.example.footballleague.source.remote.LeagueDetail
 import com.example.footballleague.source.remote.LeagueDetailResponse
 import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -38,13 +40,13 @@ class LeagueDetailViewModel(
         get() = _isShowLoading
 
     fun getLeagueDetail(leagueId: Int) {
-        _isShowLoading.postValue(true)
+        GlobalScope.launch {
+            _isShowLoading.postValue(true)
 
-        doAsync {
             val data = gson.fromJson(
-                apiRepository.doRequest(
+                apiRepository.doRequestAsync(
                     TheSportDbApi.getLeagueDetails(leagueId.toString())
-                ),
+                ).await(),
                 LeagueDetailResponse::class.java
             )
 
