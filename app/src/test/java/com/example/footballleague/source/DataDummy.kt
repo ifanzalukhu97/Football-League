@@ -1,8 +1,6 @@
 package com.example.footballleague.source
 
-import com.example.footballleague.source.remote.DetailMatch
-import com.example.footballleague.source.remote.LeagueDetail
-import com.example.footballleague.source.remote.Match
+import com.example.footballleague.source.remote.*
 
 object DataDummy {
     val leagueDetail = LeagueDetail(
@@ -67,5 +65,69 @@ object DataDummy {
         null,
         null,
         null
+    )
+
+    val SearchTeams = listOf(
+        Team(
+            "133604",
+            "Arsenal",
+            "Arsenal Football Club is a professional football club based in Holloway, London which currently plays in the Premier League, the highest level of English football.",
+            "https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png"
+        ),
+        Team(
+            "133612",
+            "Man United",
+            "Manchester United Football Club is an English professional football club, based in Old Trafford, Greater Manchester that plays in the Premier League.",
+            "https://www.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png"
+        )
+    )
+
+    val standings = listOf(
+        Standings(
+            "Liverpool",
+            20,
+            19,
+            1,
+            0,
+            38,
+            58,
+            "133602"
+        ),
+        Standings(
+            "Leicester",
+            21,
+            14,
+            3,
+            4,
+            35,
+            45,
+            "133626"
+        )
+    )
+
+    val teamDetail = TeamDetail(
+        "133612",
+        "Man United",
+        "Manchester United Football Club is an English professional football club, based in Old Trafford, Greater Manchester that plays in the Premier League.",
+        "https://www.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png",
+        "Manchester United, Red Devils",
+        "Old Trafford",
+        "76962",
+        "Trafford, Greater Manchester"
+    )
+
+    val teams = listOf(
+        Team(
+            "133604",
+            "Arsenal",
+            "Arsenal Football Club is a professional football club based in Holloway, London which currently plays in the Premier League, the highest level of English football.",
+            "https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png"
+        ),
+        Team(
+            "133612",
+            "Man United",
+            "Manchester United Football Club is an English professional football club, based in Old Trafford, Greater Manchester that plays in the Premier League.",
+            "https://www.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png"
+        )
     )
 }

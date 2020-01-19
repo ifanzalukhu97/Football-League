@@ -10,6 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/tiny_spacing">
 
@@ -19,6 +20,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:ellipsize="end"
+            android:maxLines="1"
             tools:text="Crystal Palace vs Liverpool" />
 
         <TextView

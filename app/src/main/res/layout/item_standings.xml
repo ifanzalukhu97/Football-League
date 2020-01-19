@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/small_spacing"
+    app:cardCornerRadius="@dimen/small_spacing"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/small_spacing">
+
+        <TextView
+            android:id="@+id/txtPosition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_spacing"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="1" />
+
+        <ImageView
+            android:id="@+id/imgClub"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginTop="@dimen/normal_spacing"
+            android:layout_marginEnd="@dimen/small_spacing"
+            android:layout_marginBottom="@dimen/normal_spacing"
+            android:contentDescription="@string/team_badge_description"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintStart_toEndOf="@id/txtPosition"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:src="@drawable/english_premier_league" />
+
+        <TextView
+            android:id="@+id/txtClub"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/small_spacing"
+            android:paddingEnd="@dimen/small_spacing"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtPlayed"
+            app:layout_constraintStart_toEndOf="@id/imgClub"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="Man United" />
+
+        <TextView
+            android:id="@+id/txtPlayed"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtWon"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/txtWon"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtDrawn"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="8" />
+
+        <TextView
+            android:id="@+id/txtDrawn"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtLost"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="7" />
+
+        <TextView
+            android:id="@+id/txtLost"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtGoalsDiff"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/txtGoalsDiff"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+            app:layout_constraintEnd_toStartOf="@id/txtPoints"
+            app:layout_constraintTop_toTopOf="@id/txtPoints"
+            tools:text="+9" />
+
+        <TextView
+            android:id="@+id/txtPoints"
+            style="@style/StandingsColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minEms="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+9" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

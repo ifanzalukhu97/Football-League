@@ -14,8 +14,9 @@ import com.bumptech.glide.Glide
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.source.remote.LeagueDetail
-import com.example.footballleague.ui.lastmatch.LastMatchFragment
-import com.example.footballleague.ui.nextmatch.NextMatchFragment
+import com.example.footballleague.ui.matchlist.MatchListFragment
+import com.example.footballleague.ui.standings.StandingsFragment
+import com.example.footballleague.ui.teams.TeamsFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_league_detail.*
@@ -42,6 +43,7 @@ class LeagueDetailActivity : AppCompatActivity() {
             .get(LeagueDetailViewModel::class.java)
 
         viewModelReadyToObserve(leagueId)
+        tabLayoutListener()
     }
 
 
@@ -67,7 +69,6 @@ class LeagueDetailActivity : AppCompatActivity() {
     }
 
     private fun populateView(league: LeagueDetail) {
-
         with(league) {
             viewModel.getImageBitmap(badgeUrl)
 
@@ -85,28 +86,15 @@ class LeagueDetailActivity : AppCompatActivity() {
             imgTwitter.setOnClickListener { loadWebUrlIntent(twitterUrl) }
             imgYoutube.setOnClickListener { loadWebUrlIntent(youtubeUrl) }
         }
-
-        onLeagueTabSelected(getString(R.string.league_last_match))
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(p0: TabLayout.Tab?) {}
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {}
-
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.let {
-                    onLeagueTabSelected(it.text.toString())
-                }
-            }
-
-        })
     }
 
     private fun onLeagueTabSelected(leagueMatch: String) {
         selectedLeagueTab = leagueMatch
 
         val fragment: Fragment? = when (leagueMatch) {
-            getString(R.string.league_next_match) -> NextMatchFragment.newInstance(leagueId.toString())
-            getString(R.string.league_last_match) -> LastMatchFragment.newInstance(leagueId.toString())
+            getString(R.string.league_match) -> MatchListFragment.newInstance(leagueId.toString())
+            getString(R.string.standings) -> StandingsFragment.newInstance(leagueId.toString())
+            getString(R.string.teams) -> TeamsFragment.newInstance(leagueId.toString())
             else -> null
         }
 
@@ -144,5 +132,22 @@ class LeagueDetailActivity : AppCompatActivity() {
             setTabTextColors(Color.GRAY, darkVibrantSwatch)
             setSelectedTabIndicatorColor(darkVibrantSwatch)
         }
+    }
+
+    private fun tabLayoutListener() {
+        onLeagueTabSelected(getString(R.string.league_match))
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {}
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {}
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    onLeagueTabSelected(it.text.toString())
+                }
+            }
+
+        })
     }
 }

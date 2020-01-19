@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search.team.SearchTeamFragment">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchTeam"
+        style="@style/AppSearchView"
+        android:background="@drawable/bg_search_view_corners"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/search_team_hint" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchTeam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:layout_marginBottom="@dimen/small_spacing"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/searchTeam"
+        app:layout_constraintStart_toStartOf="@id/searchTeam"
+        app:layout_constraintTop_toBottomOf="@id/searchTeam"
+        tools:listitem="@layout/item_team" />
+
+    <ProgressBar
+        android:id="@+id/progressBarSearchTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchTeam" />
+
+    <TextView
+        android:id="@+id/txtNoTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_spacing"
+        android:text="@string/no_team"
+        android:textAlignment="center"
+        android:textColor="@color/whiteDark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

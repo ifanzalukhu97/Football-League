@@ -62,7 +62,7 @@ class FavoriteNextMatchFragment : Fragment() {
             })
 
             isEmptyMatchList.observe(this@FavoriteNextMatchFragment, Observer { isEmpty ->
-                groupNoMatch.visibility = when (isEmpty) {
+                groupNoMatchLastMatch.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }

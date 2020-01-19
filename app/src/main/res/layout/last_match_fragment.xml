@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.lastmatch.LastMatchFragment">
+    tools:context=".ui.matchlist.MatchListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLastMatch"

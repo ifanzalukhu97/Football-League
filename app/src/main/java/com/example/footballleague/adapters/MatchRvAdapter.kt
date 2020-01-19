@@ -14,6 +14,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class MatchRvAdapter(
+    private val isHorizontalScroll: Boolean = false,
     private val listener: (String) -> Unit
 ) : RecyclerView.Adapter<MatchRvAdapter.ViewHolder>() {
 
@@ -24,12 +25,16 @@ class MatchRvAdapter(
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_match, parent, false)
-        )
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_match, parent, false)
+        if (isHorizontalScroll) {
+            view.layoutParams = ViewGroup.LayoutParams(
+                (parent.width * 0.8).toInt(),
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+        return ViewHolder(view)
+    }
     override fun getItemCount() = matchList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

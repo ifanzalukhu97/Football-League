@@ -16,8 +16,6 @@ import com.example.footballleague.source.remote.LeagueDetailResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class LeagueDetailViewModel(
     private val gson: Gson,
@@ -66,24 +64,20 @@ class LeagueDetailViewModel(
 
     // get bitmap from imageUrl
     fun getImageBitmap(imageUrl: String) {
-        doAsync {
-            uiThread {
-                Glide.with(app)
-                    .asBitmap()
-                    .load(imageUrl)
-                    .into(object : CustomTarget<Bitmap>() {
-                        override fun onLoadCleared(placeholder: Drawable?) {}
+        Glide.with(app)
+            .asBitmap()
+            .load(imageUrl)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onLoadCleared(placeholder: Drawable?) {}
 
-                        override fun onResourceReady(
-                            resource: Bitmap,
-                            transition: Transition<in Bitmap>?
-                        ) {
-                            createPaletteAsync(resource)
-                        }
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    createPaletteAsync(resource)
+                }
 
-                    })
-            }
-        }
+            })
     }
 }
 

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ui.favorite.FavoriteActivity">
+    tools:context=".ui.favorite.FavoriteActivity"
+    tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -41,6 +42,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/favorite_next_match" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/teams" />
 
     </com.google.android.material.tabs.TabLayout>
 

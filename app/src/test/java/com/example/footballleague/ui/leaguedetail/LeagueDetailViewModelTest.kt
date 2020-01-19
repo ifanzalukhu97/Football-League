@@ -70,11 +70,11 @@ class LeagueDetailViewModelTest {
 
         viewModel.getLeagueDetail(leagueId)
 
-        val detailMovie = LiveDataTestUtil.getValue(viewModel.leagueDetail)
+        val detailLeague = LiveDataTestUtil.getValue(viewModel.leagueDetail)
         val isShowLoading = LiveDataTestUtil.getValue(viewModel.isShowLoading)
 
-        assertNotNull(detailMovie)
-        assertEquals(detailMovie, DataDummy.leagueDetail)
+        assertNotNull(detailLeague)
+        assertEquals(detailLeague, DataDummy.leagueDetail)
         assertEquals(isShowLoading, false)
     }
 

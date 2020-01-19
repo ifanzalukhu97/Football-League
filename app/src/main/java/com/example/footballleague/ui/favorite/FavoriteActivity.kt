@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.footballleague.R
 import com.example.footballleague.ui.favorite.lastmatch.FavoriteLastMatchFragment
 import com.example.footballleague.ui.favorite.nextmatch.FavoriteNextMatchFragment
+import com.example.footballleague.ui.favorite.teams.FavoriteTeamsFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_favorite.*
 
@@ -37,6 +38,7 @@ class FavoriteActivity : AppCompatActivity() {
         val fragment: Fragment? = when (tab) {
             getString(R.string.favorite_next_match) -> FavoriteNextMatchFragment.newInstance()
             getString(R.string.favorite_last_match) -> FavoriteLastMatchFragment.newInstance()
+            getString(R.string.teams) -> FavoriteTeamsFragment.newInstance()
             else -> null
         }
 

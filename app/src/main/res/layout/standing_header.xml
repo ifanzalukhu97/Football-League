@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/normal_spacing"
+    android:paddingBottom="@dimen/small_spacing"
+    tools:background="@android:color/darker_gray">
+
+    <TextView
+        android:id="@+id/txtPositionHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_spacing"
+        android:text="@string/standings_position"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtClub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="@dimen/small_spacing"
+        android:paddingEnd="@dimen/small_spacing"
+        android:text="@string/standings_club"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtPlayed"
+        app:layout_constraintStart_toEndOf="@id/txtPositionHeader"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtPlayed"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/standings_played"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtWon"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtWon"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/standings_won"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtDrawn"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtDrawn"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/standings_drawn"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtLost"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtLost"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/standings_lost"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtGoalsDiff"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtGoalsDiff"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/standings_goals_diff"
+        app:layout_constraintBottom_toBottomOf="@id/txtPoints"
+        app:layout_constraintEnd_toStartOf="@id/txtPoints"
+        app:layout_constraintTop_toTopOf="@id/txtPoints" />
+
+    <TextView
+        android:id="@+id/txtPoints"
+        style="@style/StandingsColumnLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_spacing"
+        android:minEms="3"
+        android:text="@string/standings_points"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

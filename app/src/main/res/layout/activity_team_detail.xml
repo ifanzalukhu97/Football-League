@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@android:color/darker_gray"
+    tools:context=".ui.teamdetail.TeamDetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/team_detail" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDetailTeam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/normal_spacing"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/tiny_spacing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imgBadgeTeam"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/large_spacing"
+        android:contentDescription="@string/team_badge_description"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardDetailTeam"
+        app:layout_constraintStart_toStartOf="@id/cardDetailTeam"
+        app:layout_constraintTop_toTopOf="@id/cardDetailTeam"
+        tools:srcCompat="@drawable/english_premier_league" />
+
+    <TextView
+        android:id="@+id/txtNameTeam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_spacing"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:layout_marginEnd="@dimen/normal_spacing"
+        android:elevation="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintEnd_toEndOf="@id/cardDetailTeam"
+        app:layout_constraintStart_toStartOf="@+id/cardDetailTeam"
+        app:layout_constraintTop_toBottomOf="@id/imgBadgeTeam"
+        tools:text="Manchester United"
+        tools:textColor="#38003c" />
+
+    <TextView
+        android:id="@+id/txtNicknameTeam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tiny_spacing"
+        android:elevation="2dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingBottom="@dimen/normal_spacing"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@id/txtNameTeam"
+        app:layout_constraintStart_toStartOf="@id/txtNameTeam"
+        app:layout_constraintTop_toBottomOf="@id/txtNameTeam"
+        tools:text="The Red Devils" />
+
+    <TextView
+        android:id="@+id/txtStadiumLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:elevation="2dp"
+        android:text="@string/stadium"
+        app:layout_constraintEnd_toEndOf="@id/txtNameTeam"
+        app:layout_constraintStart_toStartOf="@id/txtNameTeam"
+        app:layout_constraintTop_toBottomOf="@id/txtNicknameTeam" />
+
+    <TextView
+        android:id="@+id/txtStadium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/txtStadiumLabel"
+        app:layout_constraintStart_toStartOf="@id/txtStadiumLabel"
+        app:layout_constraintTop_toBottomOf="@id/txtStadiumLabel"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/txtDescTeamLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:elevation="2dp"
+        android:text="@string/description_team"
+        app:layout_constraintEnd_toEndOf="@id/txtStadiumLabel"
+        app:layout_constraintStart_toStartOf="@id/txtStadiumLabel"
+        app:layout_constraintTop_toBottomOf="@id/txtStadium" />
+
+    <TextView
+        android:id="@+id/txtDescTeam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/normal_spacing"
+        android:elevation="2dp"
+        android:ellipsize="end"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/cardDetailTeam"
+        app:layout_constraintEnd_toEndOf="@id/txtDescTeamLabel"
+        app:layout_constraintStart_toStartOf="@id/txtStadiumLabel"
+        app:layout_constraintTop_toBottomOf="@id/txtDescTeamLabel"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

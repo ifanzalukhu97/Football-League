@@ -22,14 +22,14 @@ import com.example.footballleague.source.remote.DetailMatchResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class MatchDetailViewModel(
     private val gson: Gson,
     private val apiRepository: ApiRepository,
     private val app: Application
 ) : ViewModel() {
+
+    private val tag = this.javaClass.simpleName
 
     private val colorPrimaryLighter = app.getColor(R.color.colorPrimaryLighter)
 
@@ -74,30 +74,26 @@ class MatchDetailViewModel(
     }
 
     fun getImageBitmap(imageUrl: String) {
-        doAsync {
-            uiThread {
-                Glide.with(app)
-                    .asBitmap()
-                    .load(imageUrl)
-                    .into(object : CustomTarget<Bitmap>() {
-                        override fun onLoadCleared(placeholder: Drawable?) {}
+        Glide.with(app)
+            .asBitmap()
+            .load(imageUrl)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onLoadCleared(placeholder: Drawable?) {}
 
-                        override fun onResourceReady(
-                            resource: Bitmap,
-                            transition: Transition<in Bitmap>?
-                        ) {
-                            createPaletteAsync(resource)
-                        }
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    createPaletteAsync(resource)
+                }
 
-                    })
-            }
-        }
+            })
     }
 
     fun addMatchToFavorite() {
         try {
             _detailMatch.value?.let { match ->
-                app.database.addToFavorite(match)
+                app.database.addMatchToFavorite(match)
             }
             _addFavoriteResponse.postValue(app.getString(R.string.sucess_added_to_favorite))
 
@@ -109,7 +105,7 @@ class MatchDetailViewModel(
     fun removeMatchFromFavorite() {
         try {
             _detailMatch.value?.let { match ->
-                app.database.removeFromFavorite(match.idEvent)
+                app.database.removeMatchFromFavorite(match.idEvent)
             }
 
             _addFavoriteResponse.postValue(app.getString(R.string.success_remove_to_favorite))
@@ -120,9 +116,9 @@ class MatchDetailViewModel(
 
     fun favoriteState(eventId: String) {
         try {
-            isFavorite = app.database.favoriteState(eventId)
+            isFavorite = app.database.favoriteMatchState(eventId)
         } catch (e: SQLiteConstraintException) {
-            Log.d("Hell", e.localizedMessage ?: "")
+            Log.e(tag, e.localizedMessage ?: "")
         }
     }
 }

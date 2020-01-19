@@ -4,6 +4,8 @@
     <string name="title_league_info">League Info</string>
     <string name="league_last_match">Last Match</string>
     <string name="league_next_match">Next Match</string>
+    <string name="standings">Standings</string>
+    <string name="league_match">Match</string>
     <string name="full_time">FT</string>
     <string name="goal_detail">Goal Details</string>
     <string name="statistic">Statistic</string>
@@ -11,6 +13,7 @@
     <string name="yellow_cards">Yellow Cards</string>
     <string name="red_cards">Red Cards</string>
     <string name="no_match">Empty Match /\nMatch Not Found</string>
+    <string name="no_team">Empty Team /\nTeam Not Found</string>
     <string name="image_trophy_description">Image Trophy</string>
     <string name="social_media_logo_description">Social Media Logo</string>
     <string name="team_badge_description">Team Badge</string>
@@ -24,4 +27,21 @@
     <string name="add_to_favorite">Add to Favorite</string>
     <string name="sucess_added_to_favorite">Added to favorite</string>
     <string name="success_remove_to_favorite">Removed to favorite</string>
+    <string name="standings_position">Pos</string>
+    <string name="standings_club">Club</string>
+    <string name="standings_played">PL</string>
+    <string name="standings_won">W</string>
+    <string name="standings_drawn">D</string>
+    <string name="standings_lost">L</string>
+    <string name="standings_goals_diff">GD</string>
+    <string name="standings_points">PT</string>
+    <string name="teams">Teams</string>
+
+    <string name="stadium">Stadium</string>
+    <string name="description_team">Description</string>
+    <string name="stadium_value">%s is football stadium in %s, and the home of %s, with capacity of %s</string>
+    <string name="team_detail">Team Detail</string>
+    <string name="search_match_label">Search Match</string>
+    <string name="search_team_label">Search Team</string>
+    <string name="search_team_hint">Search Team</string>
 </resources>
