@@ -3,15 +3,13 @@ package com.example.footballleague.ui.search.team
 import android.widget.AutoCompleteTextView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.rule.ActivityTestRule
-import com.example.footballleague.R
+import com.agoda.kakao.screen.Screen
 import com.example.footballleague.testing.SingleFragmentActivity
+import com.example.footballleague.ui.search.screen.SearchTeamFragmentScreen
 import com.example.footballleague.utils.EspressoIdlingResource
-import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -24,10 +22,14 @@ class SearchTeamFragmentTest {
         ActivityTestRule(SingleFragmentActivity::class.java)
     private val searchTeamFragment: SearchTeamFragment = SearchTeamFragment()
 
+    private lateinit var searchTeamScreen: Screen<SearchTeamFragmentScreen>
+
     @Before
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource())
         activityRule.activity.setFragment(searchTeamFragment)
+
+        searchTeamScreen = SearchTeamFragmentScreen()
     }
 
     @After
@@ -37,53 +39,50 @@ class SearchTeamFragmentTest {
 
     @Test
     fun searchTeam() {
-        onView(withId(R.id.searchTeam))
-            .check(matches(isDisplayed()))
-        onView(isAssignableFrom(AutoCompleteTextView::class.java))
-            .perform(typeText("man united"))
+        searchTeamScreen {
+            searchTeam.isDisplayed()
+            onView(isAssignableFrom(AutoCompleteTextView::class.java))
+                .perform(typeText("man united"))
 
-        onView(withId(R.id.rvSearchTeam))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.txtNoTeam))
-            .check(matches(not(isDisplayed())))
+            rvSearchTeam.isDisplayed()
+            txtNoTeam.isNotDisplayed()
+        }
     }
 
     @Test
     fun searchTeam_queryIsEmptyOrBlank() {
-        onView(withId(R.id.searchTeam))
-            .check(matches(isDisplayed()))
-        onView(isAssignableFrom(AutoCompleteTextView::class.java))
-            .perform(typeText(""))
+        searchTeamScreen {
+            searchTeam.isDisplayed()
+            onView(isAssignableFrom(AutoCompleteTextView::class.java))
+                .perform(typeText(""))
 
-        onView(withId(R.id.txtNoTeam))
-            .check(matches(isDisplayed()))
+            txtNoTeam.isDisplayed()
+        }
     }
 
     @Test
     fun searchTeam_resultIsEmpty() {
-        onView(withId(R.id.searchTeam))
-            .check(matches(isDisplayed()))
-        onView(isAssignableFrom(AutoCompleteTextView::class.java))
-            .perform(typeText("ifan zalukhu"))
+        searchTeamScreen {
+            searchTeam.isDisplayed()
+            onView(isAssignableFrom(AutoCompleteTextView::class.java))
+                .perform(typeText("ifan zalukhu"))
 
-        onView(withId(R.id.txtNoTeam))
-            .check(matches(isDisplayed()))
+            txtNoTeam.isDisplayed()
+        }
     }
 
     @Test
     fun searchTeam_clearQuery_teamEmpty() {
-        onView(withId(R.id.searchTeam))
-            .check(matches(isDisplayed()))
-        onView(isAssignableFrom(AutoCompleteTextView::class.java))
-            .perform(typeText("man united"))
+        searchTeamScreen {
+            searchTeam.isDisplayed()
+            onView(isAssignableFrom(AutoCompleteTextView::class.java))
+                .perform(typeText("man united"))
 
-        onView(withId(R.id.rvSearchTeam))
-            .check(matches(isDisplayed()))
+            rvSearchTeam.isDisplayed()
 
-        onView(withId(R.id.search_close_btn))
-            .perform(ViewActions.click())
+            searchCloseBtn.perform { click() }
 
-        onView(withId(R.id.txtNoTeam))
-            .check(matches(isDisplayed()))
+            txtNoTeam.isDisplayed()
+        }
     }
 }

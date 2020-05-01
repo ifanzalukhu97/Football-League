@@ -18,7 +18,7 @@ Football Apps ini adalah proyek aplikasi Android menggunakan Kotlin yang saya gu
  1. [Anko](https://github.com/Kotlin/anko) : Layout, Commons, SQLite dan Coroutines.
  2. [Kotlin / Android Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
  3. [AndroidX / JetPack](https://developer.android.com/jetpack/?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYS1hKY2IwwvtUnqilch63CcvD3OBskZTVzcx1WdUXo5l-rDxj004hAaAuTOEALw_wcB): ViewModel, LiveData, Palette dan Android KTX
- 4. Testing : [Espresso](https://developer.android.com/training/testing/espresso), [JUnit4](https://developer.android.com/training/testing/junit-rules), [Mockito](https://site.mockito.org/)
+ 4. Testing : [Espresso](https://developer.android.com/training/testing/espresso), [JUnit4](https://developer.android.com/training/testing/junit-rules), [Mockito](https://site.mockito.org/), [Kakao](https://github.com/agoda-com/Kakao)
  5. Material Design, Glide dll.
 
 ## API
