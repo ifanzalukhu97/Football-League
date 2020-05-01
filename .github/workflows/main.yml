@@ -20,12 +20,16 @@ jobs:
         with:
           java-version: 1.8
       
+      # Change wrapper permissions
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      
       # Check the code with Android linter
       - name: Run Android Linter
-        run: ./gradlew lintMasterDebug
+        run: ./gradlew lintDebug
 
       # Step 4: Yun your unit tests
       - name: Run Unit Tests
-        run: ./gradlew testMasterDebugUnitTest
+        run: ./gradlew testDebugUnitTest
     
            
