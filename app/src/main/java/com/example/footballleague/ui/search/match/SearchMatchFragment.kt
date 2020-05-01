@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.adapters.MatchRvAdapter
@@ -36,7 +36,7 @@ class SearchMatchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModelFactory = SearchMatchViewModelFactory(Gson(), ApiRepository())
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(SearchMatchViewModel::class.java)
 
         populateView()
@@ -72,18 +72,18 @@ class SearchMatchFragment : Fragment() {
 
     private fun viewModelReadyToObserve() {
         with(viewModel) {
-            matchList.observe(this@SearchMatchFragment, Observer { matchList ->
+            matchList.observe(viewLifecycleOwner, Observer { matchList ->
                 adapter.setMatchList(matchList)
             })
 
-            isShowLoading.observe(this@SearchMatchFragment, Observer { isDisplay ->
+            isShowLoading.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarSearchMatch.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyMatchList.observe(this@SearchMatchFragment, Observer { isEmpty ->
+            isEmptyMatchList.observe(viewLifecycleOwner, Observer { isEmpty ->
                 groupNoMatchLastMatch.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE

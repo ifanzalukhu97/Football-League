@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.adapters.StandingsRvAdapter
@@ -46,7 +46,7 @@ class StandingsFragment : Fragment() {
         rvStandings.adapter = adapter
 
         val viewModelFactory = StandingsViewModelFactory(Gson(), ApiRepository())
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(StandingsViewModel::class.java)
 
         leagueId = arguments?.getString(KEY_LEAGUE_ID)
@@ -59,12 +59,12 @@ class StandingsFragment : Fragment() {
 
     private fun viewModelReadyToObserve() {
         with(viewModel) {
-            standingList.observe(this@StandingsFragment, Observer { standingsList ->
+            standingList.observe(viewLifecycleOwner, Observer { standingsList ->
                 standingHeader.visibility = View.VISIBLE
                 adapter.setStandingsList(standingsList)
             })
 
-            isShowLoading.observe(this@StandingsFragment, Observer { isDisplay ->
+            isShowLoading.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarStandings.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE

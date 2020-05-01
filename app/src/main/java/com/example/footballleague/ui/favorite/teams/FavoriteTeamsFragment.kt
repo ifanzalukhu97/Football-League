@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.footballleague.R
 import com.example.footballleague.adapters.TeamsRvAdapter
 import com.example.footballleague.ui.teamdetail.TeamDetailActivity
@@ -34,7 +34,7 @@ class FavoriteTeamsFragment : Fragment() {
 
         activity?.let {
             val viewModelFactory = TeamsViewModelFactory(it.application)
-            viewModel = ViewModelProviders.of(this, viewModelFactory)
+            viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(TeamsViewModel::class.java)
 
             viewModelReadyToObserve()
@@ -50,18 +50,18 @@ class FavoriteTeamsFragment : Fragment() {
         with(viewModel) {
             viewModel.getTeams()
 
-            teams.observe(this@FavoriteTeamsFragment, Observer { teams ->
+            teams.observe(viewLifecycleOwner, Observer { teams ->
                 adapter.setTeams(teams)
             })
 
-            isShowLoading.observe(this@FavoriteTeamsFragment, Observer { isDisplay ->
+            isShowLoading.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarTeams.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyTeams.observe(this@FavoriteTeamsFragment, Observer { isEmpty ->
+            isEmptyTeams.observe(viewLifecycleOwner, Observer { isEmpty ->
                 txtNoTeam.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE

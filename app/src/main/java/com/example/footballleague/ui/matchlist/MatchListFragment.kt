@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
@@ -51,7 +51,7 @@ class MatchListFragment : Fragment() {
         leagueId = arguments?.getString(KEY_LEAGUE_ID)
 
         val viewModelFactory = MatchListViewModelFactory(Gson(), ApiRepository())
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(LeagueDetailMatchViewModel::class.java)
 
         lastMatchAdapter =
@@ -87,36 +87,36 @@ class MatchListFragment : Fragment() {
 
     private fun viewModelReadyToObserve() {
         with(viewModel) {
-            lastMatchList.observe(this@MatchListFragment, Observer { matchList ->
+            lastMatchList.observe(viewLifecycleOwner, Observer { matchList ->
                 matchList?.let { lastMatchAdapter.setMatchList(it) }
             })
 
-            nextMatchList.observe(this@MatchListFragment, Observer { matchList ->
+            nextMatchList.observe(viewLifecycleOwner, Observer { matchList ->
                 matchList?.let { nextMatchAdapter.setMatchList(it) }
             })
 
-            isShowLoadingLastMatch.observe(this@MatchListFragment, Observer { isDisplay ->
+            isShowLoadingLastMatch.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarLastMatch.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isShowLoadingNextMatch.observe(this@MatchListFragment, Observer { isDisplay ->
+            isShowLoadingNextMatch.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarNextMatch.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyLastMatch.observe(this@MatchListFragment, Observer { isEmpty ->
+            isEmptyLastMatch.observe(viewLifecycleOwner, Observer { isEmpty ->
                 groupNoMatchLastMatch.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyNextMatch.observe(this@MatchListFragment, Observer { isEmpty ->
+            isEmptyNextMatch.observe(viewLifecycleOwner, Observer { isEmpty ->
                 groupNoMatchNextMatch.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE

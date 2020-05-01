@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
@@ -40,7 +40,7 @@ class MatchDetailActivity : AppCompatActivity() {
 
         val viewModelFactory =
             MatchDetailViewModelFactory(Gson(), ApiRepository(), this.application)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MatchDetailViewModel::class.java)
 
         viewModelReadyToObserve()

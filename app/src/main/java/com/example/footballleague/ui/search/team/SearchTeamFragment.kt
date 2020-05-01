@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
 import com.example.footballleague.adapters.TeamsRvAdapter
@@ -36,7 +36,7 @@ class SearchTeamFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModelFactory = SearchTeamViewModelFactory(Gson(), ApiRepository())
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(SearchTeamViewModel::class.java)
 
         populateView()
@@ -72,18 +72,18 @@ class SearchTeamFragment : Fragment() {
 
     private fun viewModelReadyToObserve() {
         with(viewModel) {
-            teams.observe(this@SearchTeamFragment, Observer { teams ->
+            teams.observe(viewLifecycleOwner, Observer { teams ->
                 adapter.setTeams(teams)
             })
 
-            isShowLoading.observe(this@SearchTeamFragment, Observer { isDisplay ->
+            isShowLoading.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarSearchTeam.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyTeams.observe(this@SearchTeamFragment, Observer { isEmpty ->
+            isEmptyTeams.observe(viewLifecycleOwner, Observer { isEmpty ->
                 txtNoTeam.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.footballleague.ApiRepository
 import com.example.footballleague.R
@@ -39,7 +39,7 @@ class LeagueDetailActivity : AppCompatActivity() {
 
         val viewModelFactory =
             LeagueDetailViewModelFactory(Gson(), ApiRepository(), this.application)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(LeagueDetailViewModel::class.java)
 
         viewModelReadyToObserve(leagueId)

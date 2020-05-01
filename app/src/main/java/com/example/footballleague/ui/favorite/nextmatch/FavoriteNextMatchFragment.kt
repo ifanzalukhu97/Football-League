@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.footballleague.R
 import com.example.footballleague.adapters.MatchRvAdapter
 import com.example.footballleague.ui.matchdetail.MatchDetailActivity
@@ -34,7 +34,7 @@ class FavoriteNextMatchFragment : Fragment() {
 
         activity?.let {
             val viewModelFactory = FavoriteNextMatchViewModelFactory(it.application)
-            viewModel = ViewModelProviders.of(this, viewModelFactory)
+            viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(FavoriteNextMatchViewModel::class.java)
 
             viewModelReadyToObserve()
@@ -50,18 +50,18 @@ class FavoriteNextMatchFragment : Fragment() {
         with(viewModel) {
             getFavoriteNextMatch()
 
-            matchList.observe(this@FavoriteNextMatchFragment, Observer { matchList ->
+            matchList.observe(viewLifecycleOwner, Observer { matchList ->
                 adapter.setMatchList(matchList)
             })
 
-            isShowLoading.observe(this@FavoriteNextMatchFragment, Observer { isDisplay ->
+            isShowLoading.observe(viewLifecycleOwner, Observer { isDisplay ->
                 progressBarNextMatch.visibility = when (isDisplay) {
                     true -> View.VISIBLE
                     false -> View.GONE
                 }
             })
 
-            isEmptyMatchList.observe(this@FavoriteNextMatchFragment, Observer { isEmpty ->
+            isEmptyMatchList.observe(viewLifecycleOwner, Observer { isEmpty ->
                 groupNoMatchLastMatch.visibility = when (isEmpty) {
                     true -> View.VISIBLE
                     false -> View.GONE
